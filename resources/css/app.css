@@ -1,0 +1,39 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "custom.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles Wifi */
+.wave {
+	border: 3px solid transparent;
+	border-top-color: currentColor;
+	border-radius: 50%;
+	border-style: solid;
+	margin: 5px;
+}
+
+.waveStrength-4 .wv4.wave{
+    color:rgb(34 197 94);
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.waveStrength-3 .wv3.wave{
+    color:rgb(234 179 8);
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.waveStrength-2 .wv2.wave{
+    color:rgb(234 179 8);
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.waveStrength-1 .wv1.wave{
+    color:red;
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+/* -End- */
