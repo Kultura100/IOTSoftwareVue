@@ -6,9 +6,9 @@
             </h2>
         </template>
 
-    <div class="flex flex-col items-center mx-auto rounded-md w-full lg:p-4 lg:w-1/3 mt-2" style="background: rgba(0,0,0,0.2);">
+    <div class="flex flex-col items-center mx-2 lg:mx-auto rounded-md w-full lg:p-4 lg:w-1/3 mt-2" style="background: rgba(0,0,0,0.2);">
         <h2 class="font-bold text-[#1a8eca] text-2xl mb-3">{{__('dashboard.receiverpanel.edit.title')}}</h2>
-        <form class="w-full max-w-lg mb-3">
+        <form class="w-full mb-2">
             <div class="flex flex-wrap lg:-mx-3 mb-6 mx-2">
                 <div class="w-full md:w-2/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-[#1a8eca] text-xs font-bold mb-2 text-left">
@@ -31,7 +31,7 @@
             </div>
         </form>
         <div>
-            <JetButton @click="onSubmit">{{__('dashboard.receiverpanel.edit.buttontitle')}}</JetButton>
+            <JetButton class="mb-2" @click="onSubmit">{{__('dashboard.receiverpanel.edit.buttontitle')}}</JetButton>
         </div>
     </div>
     </AppLayout>

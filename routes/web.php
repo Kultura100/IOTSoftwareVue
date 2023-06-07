@@ -29,6 +29,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 
 Route::get('/device', [DeviceController::class, 'test'])->withoutMiddleware([StartSession::class,ShareErrorsFromSession::class,VerifyCsrfToken::class])->name('device');
+Route::get('/brama', [DeviceController::class, 'brama'])->withoutMiddleware([StartSession::class,ShareErrorsFromSession::class,VerifyCsrfToken::class])->name('brama');
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','web'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -65,6 +66,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','w
     Route::post('/timetables', [SettingsController::class, 'store'])->name('timetables');
     Route::post('/timetablesdelete/{id}', [SettingsController::class, 'delete'])->name('timetabledelete');
     Route::post('/change-locale', [SettingsController::class, 'changeLocale'])->name('changeLocale');
+
+    //brama
+    Route::get('/brama/{id}', [DeviceController::class, 'zmienstanbramy'])->name('bramachange');
 
     // Testing endpoints
     // Route::get('/get-auth', [NavigationController::class, 'getAuth'])->name('getAuth');

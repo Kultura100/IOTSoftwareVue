@@ -3,8 +3,8 @@
         <div class="container flex flex-col md:flex-col items-center justify-center px-5 text-white">
             <div class="max-w-md">
                 <div class="text-5xl font-bold self-center">{{ title }}</div>
-                <p class="text-2xl md:text-3xl font-light leading-normal">{{ description }}</p>
-                <p class="mb-8">But dont worry, you can find plenty of other things on our homepage.</p>
+                <!-- <p class="text-2xl md:text-3xl font-light leading-normal">{{ description }}</p>
+                <p class="mb-8">But dont worry, you can find plenty of other things on our homepage.</p> -->
                 <Button v-on:click="strona()">Powrót na strone główna</Button>
             </div>
         </div>

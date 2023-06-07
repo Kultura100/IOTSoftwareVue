@@ -21,8 +21,8 @@ defineProps({
             </h2>
         </template>
 
-        <div class="pt-5">
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8" style="background: rgba(0, 0, 0, 0.2);">
+        <div class="pt-5 pb-5 mx-2">
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 rounded-md" style="background: rgba(0, 0, 0, 0.2);">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="$page.props.user" />
 

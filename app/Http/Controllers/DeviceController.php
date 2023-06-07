@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Gate;
 use App\Models\Read;
 use Inertia\Inertia;
 use App\Models\Camera;
@@ -41,7 +43,26 @@ class DeviceController extends Controller
                     $odczyt->save();
                 }
             }
-        }   
+        } 
+        return "OK!";  
+    }
+    public function zmienstanbramy($id){
+        $brama = Gate::first();
+        $brama->current_id = $id;
+        $brama->data = Carbon::now()->timestamp;
+        $brama->save();
+    }
+
+    public function brama(){
+        $brama = Gate::first();
+        $dane = [
+            'brama' => [
+                'status' => $brama->current_id, //1-Otwarcie, 0-Zatrzymanie, -1-Zamkniecie
+                'data_godzina' => $brama->data,
+            ]
+        ];
+        
+        return response()->json($dane);
     }
 
     public function index()

@@ -83,7 +83,7 @@ mounted() {
 			</ul>
 			<ul class="flex items-center">
 				<li>
-					<h1 class="pl-10 lg:pl-0 text-white">{{title}}</h1>
+					<h1 class="lg:pl-0 text-white truncate max-w-[80px]">{{title}}</h1>
 				</li>
 			</ul>
 			<ul v-if="$page.props.Uzytkownik" class="flex items-center">

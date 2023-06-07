@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Database\Seeders\ProtocolSeeder;
 use Database\Seeders\DeviceStatusSeeder;
 use Database\Seeders\ReceiverTableSeeder;
@@ -23,5 +24,9 @@ class DatabaseSeeder extends Seeder
              'email' => 'iot@localhost',
          ]);
          $this->call([DeviceStatusSeeder::class, ProtocolSeeder::class, ReceiverTableSeeder::class, TransmitterTableSeeder::class]);
+
+         DB::table('gates')->insert([
+            'name' => 'Brama przed domem',
+         ]);
     }
 }

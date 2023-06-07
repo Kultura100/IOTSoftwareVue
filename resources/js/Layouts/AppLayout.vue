@@ -129,11 +129,11 @@
 
 <template>
     <Head title="IOT-Kawczyński Andrzej" />
-    <div class="h-screen w-screen flex">
+    <div class="h-screen w-screen flex overflow-x-auto">
       <LeftMenu :title="title" />
       <div class="flex-1 flex flex-col">
             <Navigation :title="title" />
-                <main class="overflow-auto">
+                <main class="mb-16 lg:mb-0 overflow-y-auto">
                     <slot />
                 </main>
             <!-- Page Content -->

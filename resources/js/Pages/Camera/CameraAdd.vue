@@ -1,6 +1,6 @@
 
 <template>
-    <div class="flex flex-col items-center mx-auto rounded-md w-full lg:p-4 lg:w-1/3" style="background: rgba(0,0,0,0.2);">
+    <div class="flex flex-col items-center mx-2 lg:mx-auto rounded-md w-full lg:p-4 lg:w-1/3" style="background: rgba(0,0,0,0.2);">
         <h2 class="font-bold text-[#1a8eca] text-2xl mb-3">{{__("dashboard.camerapanel.add.title")}}</h2>
         <form class="w-full max-w-lg mb-3">
             <div class="flex flex-wrap lg:-mx-3 mb-6 mx-2">
@@ -66,7 +66,7 @@
             </div>
         </form>
         <div>
-            <JetButton @click="onSubmit">{{__('dashboard.camerapanel.add.buttontitle')}}</JetButton>
+            <JetButton class="mb-2" @click="onSubmit">{{__('dashboard.camerapanel.add.buttontitle')}}</JetButton>
         </div>
     </div>
 

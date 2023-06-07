@@ -2,7 +2,7 @@
 <template>
     <AppLayout :title="__('devices.routename')">
         <template #header>
-            <h2 class="font-semibold text-xl text-white leading-tight">
+            <h2 class="font-semibold text-xl text-white leading-tight self-start">
                 {{__('devices.routename')}}
             </h2>
         </template>
@@ -77,7 +77,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-full self-center lg:w-1/2 lg:pt-0">
+                                    <div class="w-full self-center lg:w-1/3 lg:pt-0 mt-2 lg:mt-0">
                                         <div class="ml-0 lg:ml-1">
                                             <div class="text-xl font-extrabold leading-5 tracking-tight">{{__('devices.panel.address')}}</div>
                                             <div class="text-sm text-slate-500">{{ receiver.localip != null ?
@@ -86,8 +86,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-full self-center text-end lg:w-1/3 lg:pt-0">
-                                        <i title="Edytuj odbiornik" @click="edytujodbiornik(receiver.id)" class="fa-regular fa-pen-to-square fa-2x cursor-pointer"></i>
+                                    <!-- For only one receiver -->
+                                    <div class="w-full flex self-center lg:w-full lg:pt-0 gap-2 mt-2 lg:mt-0" v-show="receivers[0].status_id == 1">
+                                        <img src="storage/images/gate.png" class="z-10 h-12 w-16 object-cover mr-2" alt="Gate">
+                                        <SecondaryButton @click="otworzbrame"><img src="storage/images/opengate.png" class="z-10 h-12 w-16 object-cover" alt="Open"></SecondaryButton>
+                                        <SecondaryButton @click="zatrzymajbrame"><img src="storage/images/stop.png" class="z-10 h-12 w-16 object-cover" alt="Stop"></SecondaryButton>
+                                        <SecondaryButton @click="zamknijbrame"><img src="storage/images/closegate.png" class="z-10 h-12 w-16 object-cover" alt="Close"></SecondaryButton>
+                                        <div v-show="Animacja == true" class="self-center relative">
+                                            <div class="absolute left-3 top-2.5">{{ tekstanimacji }}</div>
+                                            <div class="w-10 h-10 rounded-full border-4 border-dashed border-purple-500 border-t-transparent animate-spin"></div>
+                                        </div>
+                                    </div>
+                                    <div class="w-full self-center text-end lg:w-1/3 lg:pt-0 relative lg:static">
+                                        <i title="Edytuj odbiornik" @click="edytujodbiornik(receiver.id)" class="fa-regular fa-pen-to-square fa-2x cursor-pointer absolute lg:static flex lg:block right-1 top-[-200px] "></i>
                                     </div>
                                 </div>
                             </div>
@@ -290,17 +301,21 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import JetButton from "@/Components/Button.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { Inertia } from '@inertiajs/inertia'
 export default {
     name: "Devices",
     components: {
         AppLayout,
         JetButton,
+        SecondaryButton
     },
     props: ["cameras", "receivers"],
     data() {
         return {
             Status: null,
+            Animacja: null,
+            tekstanimacji: null,
             form: {
             },
         };
@@ -335,6 +350,36 @@ export default {
             Inertia.get(route('timetableadd', {
                 id: id,
             }));
+        },
+        otworzbrame(){
+            Inertia.visit(route('bramachange', { id: 1 }), {
+            preserveState: true,
+            });
+            this.Animacja = true;
+            this.tekstanimacji = 'Otwieranie';
+            setTimeout(() => {
+                this.Animacja = false;
+            }, 15000);
+        },
+        zatrzymajbrame(){
+            Inertia.visit(route('bramachange', { id: 0 }), {
+            preserveState: true,
+            });
+            this.Animacja = true;
+            this.tekstanimacji = 'Zatrzymywanie';
+            setTimeout(() => {
+                this.Animacja = false;
+            }, 2000);
+        },
+        zamknijbrame(){
+            Inertia.visit(route('bramachange', { id: -1 }), {
+            preserveState: true,
+            });
+            this.Animacja = true;
+            this.tekstanimacji = 'Zamykanie';
+            setTimeout(() => {
+                this.Animacja = false;
+            }, 15000);
         }
     },
     computed: {

@@ -5,12 +5,12 @@
                 {{ __('tasktable.routename')}}
             </h2>
         </template>
-        <div class="py-2">
+        <div class="py-4">
             <div class="flex flex-col gap-2 ml-2 mr-2 lg:flex-row">
                 <div class="w-full">
-                    <div class="mb-3 flex w-full transform cursor-pointer flex-col rounded-md bg-white bg-opacity-75 p-6 transition duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg text-slate-300 lg:flex-row lg:p-4 mx-auto"
+                    <div class="mb-3 flex w-full transform cursor-pointer flex-row rounded-md bg-white bg-opacity-75 p-6 transition duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg text-slate-300 lg:p-4"
                         style="background: rgba(0, 0, 0, 0.2);">
-                        <i class="fa-solid fa-calendar fa-3x"></i>
+                        <i class="fa-solid fa-calendar fa-3x mr-2 lg:mr-0"></i>
                         <div class="w-full lg:ml-4 ml-1 self-center overflow-x-hidden">
                             <div class="w-full truncate text-lg font-bold leading-6 tracking-tight">
                                 {{ __('tasktable.title')}}
