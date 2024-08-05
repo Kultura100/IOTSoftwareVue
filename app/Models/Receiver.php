@@ -16,11 +16,11 @@ class Receiver extends Model
     }
 
     public function ParseSignal($signal){
-        if($signal < -70)
+        if($signal <= -70)
         return 1;
-        elseif($signal > -70 && $signal < -60)
+        elseif($signal > -70 && $signal <= -60)
         return 2;
-        elseif($signal > -60 && $signal < -50)
+        elseif($signal > -60 && $signal <= -50)
         return 3;
         elseif($signal > -50)
         return 4;

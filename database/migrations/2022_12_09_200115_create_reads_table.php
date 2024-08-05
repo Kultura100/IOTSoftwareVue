@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('temperature1')->nullable();
             $table->string('temperature2')->nullable();
             $table->boolean('islight')->nullable();
+            $table->integer('lightlevel')->nullable();
             $table->boolean('israining')->nullable();
             $table->unsignedBigInteger('transmitter_id');
             $table->foreign('transmitter_id')

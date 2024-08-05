@@ -35,10 +35,16 @@ class DeviceController extends Controller
             foreach ($urzadzenia as $urzadzenie) {
                 if ($urzadzenie->transmitterId == $request['deviceID']) {
                     $urzadzenie->batterypercentage = $request['battery'] > 100 ? 100 : $request['battery'];
+                    $urzadzenie->batteryvoltage = $request['batteryvoltage'];
                     $urzadzenie->save();
                     $odczyt = new Read;
                     $odczyt->humidity = $request['humidity'];
+                    $odczyt->lightlevel = $request['light'];
+                    if($request['light'] > 100){
+                        $odczyt->islight = true;
+                    } else $odczyt->islight = false;
                     $odczyt->temperature1 = $request['temperature'];
+                    $odczyt->temperature2 = $request['temperature2'];
                     $odczyt->transmitter_id = $urzadzenie->id;
                     $odczyt->save();
                 }

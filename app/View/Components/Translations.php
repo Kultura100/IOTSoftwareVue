@@ -41,7 +41,8 @@ class Translations extends Component
         }
 
         return $phpTranslations;
-    });
+        });
+        
         return view('components.translations', [
             'translations' => $translations,
         ]);

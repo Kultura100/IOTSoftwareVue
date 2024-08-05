@@ -1,58 +1,50 @@
-
 <template>
 
-    <div class="py-4 lg:py-16">
-        <div v-if="active" class="container m-auto px-6 text-gray-500 md:px-12 xl:px-0">
-            <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-2">
-                <div v-if='isReceiver == null ' @click="showreceiver()" class="select-none bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 cursor-pointer transition duration-500 ease-in-out hover:-translate-y-1 hover:animate-0"
-                    style="background-image: url('/storage/images/tlo.jpg')">
-                    <div class="mb-12 space-y-4">
-                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.receiverpanel.title')}}</h3>
-                        <p class="mb-6">
-                            {{ __('dashboard.receiverpanel.description')}}
+    <div class="py-2 lg:py-8">
+        <div v-if="active" class=" text-gray-500 mx-4 md:px-12 xl:px-0">
+            <div class="gap-6 flex flex-col lg:flex-row lg:w-1/2 w-full">
+                <div v-if='isReceiver == null' @click="showreceiver()" class="select-none bg-white rounded-2xl shadow-xl px-8 py-6 sm:px-12 lg:px-8 cursor-pointer transition duration-500 ease-in-out hover:-translate-y-1 hover:animate-0" style="background-image: url('/storage/images/tlo.jpg')">
+                    <div class="mb-2 space-y-4">
+                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.receiverpanel.title') }}</h3>
+                        <p class="mb-2">
+                            {{ __('dashboard.receiverpanel.description') }}
                         </p>
                     </div>
-                    <img :src="'/storage/images/czujniktlo.png'" class="object-cover w-2/3 ml-auto -mb-15"
-                        alt="Ilustracja autorstwa vectorjuice na Freepik">
+                    <img :src="'/storage/images/czujniktlo.png'" class="object-cover w-2/3 ml-auto -mb-15" alt="Ilustracja autorstwa vectorjuice na Freepik">
                 </div>
-                <div v-else @click="showsensor()"
-                    class="select-none bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 cursor-pointer transition duration-500 ease-in-out hover:-translate-y-1 hover:animate-0"
-                    style="background-image: url('/storage/images/tlo.jpg')">
-                    <div class="mb-12 space-y-4">
-                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.transmitterpanel.title')}}</h3>
-                        <p class="mb-6">{{ __('dashboard.transmitterpanel.description')}}</p>
+                <div v-else @click="showsensor()" class="select-none bg-white rounded-2xl shadow-xl px-8 py-6 sm:px-12 lg:px-8 cursor-pointer transition duration-500 ease-in-out hover:-translate-y-1 hover:animate-0" style="background-image: url('/storage/images/tlo.jpg')">
+                    <div class="mb-2 space-y-4">
+                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.transmitterpanel.title') }}</h3>
+                        <p class="mb-2">{{ __('dashboard.transmitterpanel.description') }}</p>
                     </div>
-                    <img :src="'/storage/images/czujniktlo.png'" class="object-cover w-2/3 ml-auto -mb-15"
-                        alt="Ilustracja autorstwa vectorjuice na Freepik">
+                    <img :src="'/storage/images/czujniktlo.png'" class="object-cover w-2/3 ml-auto -mb-15" alt="Ilustracja autorstwa vectorjuice na Freepik">
                 </div>
 
-                <div @click="showcamera()"
-                    class="select-none bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 cursor-pointer  transition duration-500 ease-in-out hover:-translate-y-1"
-                    style="background-image: url('/storage/images/tlo.jpg')">
-                    <div class="mb-12 space-y-4">
-                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.camerapanel.title')}}</h3>
-                        <p class="mb-6">{{ __('dashboard.transmitterpanel.description')}}
+                <div @click="showcamera()" class="select-none bg-white rounded-2xl shadow-xl px-8 py-6 sm:px-12 lg:px-8 cursor-pointer  transition duration-500 ease-in-out hover:-translate-y-1" style="background-image: url('/storage/images/tlo.jpg')">
+                    <div class="mb-2 space-y-4">
+                        <h3 class="text-2xl font-semibold text-purple-900">{{ __('dashboard.camerapanel.title') }}</h3>
+                        <p class="mb-2">{{ __('dashboard.transmitterpanel.description') }}
                         </p>
-                        <div class="w-full mx-auto">
-                            <div class="flex p-5 rounded-lg shadow bg-white">
-                                <div>
-                                    <svg class="w-6 h-6 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-3">
-                                    <h2 class="font-semibold text-gray-800">{{ __('dashboard.camerapanel.info.title')}}</h2>
-                                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">{{ __('dashboard.camerapanel.info.description1')}}<span class="font-bold">{{ __('dashboard.camerapanel.info.description2')}}</span>.
-                                    </p>
-                                </div>
+
+                    </div>
+                    <div class="w-full mx-auto">
+                        <div class="flex p-4 rounded-lg shadow bg-white">
+                            <div>
+                                <svg class="w-6 h-6 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <h2 class="font-semibold text-gray-800">{{ __('dashboard.camerapanel.info.title') }}</h2>
+                                <p class="mt-2 text-sm text-gray-600 leading-relaxed">{{ __('dashboard.camerapanel.info.description1') }}<span class="font-bold">{{ __('dashboard.camerapanel.info.description2') }}</span>.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <img :src="'/storage/images/kameratlo.png'" class="pt-10 w-2/3 ml-auto" alt="kameratlo">
+
                 </div>
+
             </div>
         </div>
         <div v-else>
@@ -80,7 +72,7 @@ export default {
         ReceiverAddVue,
         CameraAdd
     },
-    props: ["data", "types", "protocols","isReceiver","receivers"],
+    props: ["data", "types", "protocols", "isReceiver", "receivers"],
     mounted() {
     },
     data() {
@@ -95,11 +87,11 @@ export default {
         };
     },
     methods: {
-        showreceiver(){
+        showreceiver() {
             this.active = false;
             this.receiver = true;
         },
-        hidereceiver(){
+        hidereceiver() {
             this.active = true;
             this.receiver = false;
         },
@@ -115,7 +107,7 @@ export default {
             this.active = false;
             this.camera = true;
         },
-        hidecamera(){
+        hidecamera() {
             this.active = true;
             this.camera = false;
         },

@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
             'Uzytkownik' => Auth::user(),
             'Locale' => session()->has('selected_language') ? session()->get('selected_language') : 'pl',
             'captcha_key' => env('RECAPTCHAV3_SITEKEY'),
+            'weather_api' => env('WEATHER_API'),
         ]);
     }
 }

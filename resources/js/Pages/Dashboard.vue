@@ -1,29 +1,37 @@
 <script>
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import DeviceAdd from './Devices/DeviceAdd.vue'
-    import { Inertia } from '@inertiajs/inertia'
-    export default {
+import AppLayout from '@/Layouts/AppLayout.vue'
+import DeviceAdd from './Devices/DeviceAdd.vue'
+import InternetCheck from './Services/InternetCheck.vue';
+import AntiStorm from './Services/AntiStorm.vue';
+export default {
     name: "Dashboard",
     components: {
         AppLayout,
-       DeviceAdd,
+        DeviceAdd,
+        InternetCheck,
+        AntiStorm
     },
-    props: ["data","types","protocols","receiver","receivers"],
+    props: ["data", "types", "protocols", "receiver", "receivers"],
     data() {
-    return {
-    form: {
-        state: true,
+        return {
+            form: {
+                state: true,
+            },
+        };
     },
-    };
-},
-methods: {
-},
+    methods: {
+    },
 };
-    </script>
-    
-    <template>
-        <AppLayout :title="__('dashboard.routename')">
-            <DeviceAdd :receivers="receivers" :isReceiver="receiver" :types="types" :data="data" :protocols="protocols" /> 
-        </AppLayout>
-    </template>
-    
+</script>
+
+<template>
+    <AppLayout :title="__('dashboard.routename')">
+        <DeviceAdd :receivers="receivers" :isReceiver="receiver" :types="types" :data="data" :protocols="protocols" />
+        <div class="flex flex-col gap-2 ml-2 mr-2 lg:flex-row">
+            <div class="w-full">
+                <InternetCheck></InternetCheck>
+                <AntiStorm></AntiStorm>
+            </div>
+        </div>
+    </AppLayout>
+</template>

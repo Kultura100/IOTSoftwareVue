@@ -15,6 +15,8 @@ class TrustHosts extends Middleware
     {
         return [
             $this->allSubdomainsOfApplicationUrl(),
+            'https://api.openweathermap.org/',
+            'https://api.solarmanpv.com/device/v1.0/currentData'
         ];
     }
 }

@@ -30,6 +30,7 @@ return new class extends Migration
             ->references('id')
             ->on('receivers');
             $table->integer('batterypercentage')->nullable();
+            $table->float('batteryvoltage')->nullable();
             $table->timestamps();
         });
     }

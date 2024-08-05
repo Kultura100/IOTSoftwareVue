@@ -5,12 +5,14 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\SensorController;
 use App\Http\Controllers\AnalyzesController;
 use App\Http\Controllers\ReceiverController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SolarManController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NavigationController;
 use Illuminate\Session\Middleware\StartSession;
@@ -30,6 +32,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 Route::get('/device', [DeviceController::class, 'test'])->withoutMiddleware([StartSession::class,ShareErrorsFromSession::class,VerifyCsrfToken::class])->name('device');
 Route::get('/brama', [DeviceController::class, 'brama'])->withoutMiddleware([StartSession::class,ShareErrorsFromSession::class,VerifyCsrfToken::class])->name('brama');
+
+Route::post('/analyze-image', [ImageController::class, 'analyzeImage']);
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','web'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -76,6 +80,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','w
      Route::get('/test', function(){
         return Inertia::render('Camera/Test');
      });
+
+     Route::get('/solarman/data', [SolarManController::class, 'getData']);
 });
 
 
