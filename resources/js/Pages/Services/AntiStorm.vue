@@ -7,7 +7,10 @@
                 </div>
             </div>
             <div class="w-full lg:ml-4 ml-1">
-                <div class="w-full truncate text-xl font-bold leading-6 tracking-tight">{{ weatherData[id]?.m || 'Ładowanie...' }}</div>
+                <div class="w-full truncate text-xl font-bold leading-6 tracking-tight">{{ weatherData[id]?.m || 'Ładowanie...' }}
+                    <div v-if="weatherData[id]?.a_b == 'Tak'" title="Alarm burzowy aktywny" class="ml-1 fa-solid text-2xl  fa-cloud-rain text-blue-500 animate-pulse"></div>
+                    <div v-if="weatherData[id]?.a_o == 'Tak'" title="Alarm opadowy aktywny" class="ml-1 fa-solid text-2xl fa-bolt text-yellow-500 animate-pulse"></div>
+                </div>
                 <div class="flex flex-col lg:flex-row lg:space-x-2 mt-2">
                     <div class="text-lg">
                         <div>
@@ -19,16 +22,13 @@
                             </div>
                         </div>
                         <p><i class="fa-solid fa-percent"></i> Prawd. burzy: {{ weatherData[id]?.p_b }}</p>
+                        <p><i class="fa-solid fa-droplet"></i> Prawd. opadów: {{ weatherData[id]?.p_o }}</p>
                         <p><i class="fa-solid fa-clock"></i> Czas do burzy: {{ weatherData[id]?.t_b == 255 ? "nieznane nadejście." : weatherData[id]?.t_b + " minut" }}</p>
-                        <p><i class="fa-solid fa-droplet"></i> Prawdopodobieństwo opadów: {{ weatherData[id]?.p_o }}</p>
                         <p><i class="fa-solid fa-clock"></i> Czas do opadów: {{ weatherData[id]?.t_o == 255 ? "nieznane nadejście." : weatherData[id]?.t_o + " minut" }}</p>
-                        <p><i class="fa-solid fa-bell"></i> Alarm burzowy: {{ weatherData[id]?.a_b ? 'Tak' : 'Nie' }}</p>
-                        <p><i class="fa-solid fa-bell"></i> Alarm opadowy: {{ weatherData[id]?.a_o ? 'Tak' : 'Nie' }}</p>
                     </div>
                     <div v-if="stationData[stations[index]]" class="text-lg">
                         <p><i class="fa-solid fa-thermometer-half"></i> Temperatura: {{ stationData[stations[index]].temperatura }} °C</p>
-                        <p><i class="fa-solid fa-wind"></i> Prędkość wiatru: {{ stationData[stations[index]].predkosc_wiatru }} km/h</p>
-                        <p><i class="fa-solid fa-compass"></i> Kierunek wiatru: {{ stationData[stations[index]].kierunek_wiatru }} °</p>
+                        <p><i class="fa-solid fa-compass"></i> Kierunek i prędkość wiatru: {{ stationData[stations[index]].kierunek_wiatru }}°, {{ stationData[stations[index]].predkosc_wiatru }} km/h.</p>
                         <p><i class="fa-solid fa-water"></i> Wilgotność względna: {{ stationData[stations[index]].wilgotnosc_wzgledna }} %</p>
                         <p><i class="fa-solid fa-cloud-rain"></i> Suma opadu: {{ stationData[stations[index]].suma_opadu }} mm</p>
                         <p><i class="fa-solid fa-tachometer-alt"></i> Ciśnienie: {{ stationData[stations[index]].cisnienie }} hPa</p>
